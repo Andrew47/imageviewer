@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 function App() {
     const [imageSRC, setImageSRC] = useState("");
     const [scale, setScale] = useState(1);
+    const [x, setX] = useState(50);
+    const [y, setY] = useState(50);
     
     const onImageChange = event => {
         if (event.target.files && event.target.files[0]){
@@ -18,12 +20,28 @@ function App() {
 
     useEffect(()=> {
 		function keyHandle(event){
-		console.log(event);
+			
 		if (event.key === "z"){
 			setScale(scale => 1.1*scale);
 			}
 		if (event.key === "x"){
 			setScale(scale => scale/1.1)
+			}
+
+		if (event.key === "ArrowLeft"){
+			setX(x => x-5)
+			}
+
+		if (event.key === "ArrowRight"){
+			setX(x => x+5)
+			}
+
+		if (event.key === "ArrowUp"){
+			setY(y => y+5)
+			}
+
+		if (event.key === "ArrowDown"){
+			setY(y => y-5)
 			}
 		}
 
@@ -42,7 +60,7 @@ function App() {
 		
         displayArea = (
         <div id="imageBox">
-        <img src={imageSRC} alt="uploaded" id="uploadedImage" style={{transform: "scale(" + scale + ")"  }}/>
+        <div id="uploadedImage" style={{backgroundImage: "url('"+ imageSRC + "')", backgroundPosition: `${x}% ${y}%`, backgroundSize: `${scale}%`, backgroundRepeat: "no-repeat", }}/>
         </div>
         );
         }
