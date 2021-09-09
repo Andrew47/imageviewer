@@ -20,29 +20,31 @@ function App() {
 
     useEffect(()=> {
 		function keyHandle(event){
-			
-		if (event.key === "z"){
-			setScale(scale => 1.1*scale);
-			}
-		if (event.key === "x"){
-			setScale(scale => scale/1.1)
-			}
 
-		if (event.key === "ArrowLeft"){
-			setX(x => x-5)
-			}
-
-		if (event.key === "ArrowRight"){
-			setX(x => x+5)
-			}
-
-		if (event.key === "ArrowUp"){
-			setY(y => y+5)
-			}
-
-		if (event.key === "ArrowDown"){
-			setY(y => y-5)
-			}
+			switch(event.key) {
+				case "z":
+				setScale(scale => 1.1*scale);
+				break;
+				case "x":
+				setScale(scale => scale/1.1);
+				break;
+				case "ArrowLeft":
+				setX(x => x-5)
+				break;
+				case "ArrowRight":
+				setX(x => x+5)
+				break;
+				case "ArrowUp":
+				setY(y => y+5)
+				break;
+				case "ArrowDown":
+				setY(y => y-5)
+				break;
+				default:
+				break;
+				
+				}
+		
 		}
 
 		document.addEventListener('keydown', keyHandle);
