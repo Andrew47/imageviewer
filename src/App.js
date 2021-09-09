@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -49,14 +50,11 @@ function App() {
 
 		document.addEventListener('keydown', keyHandle);
 
-		 return function cleanup() {
+		return function cleanup() {
       document.removeEventListener('keydown', keyHandle);
     }
 		
-		}, []);
-	 
-
-    
+		}, []);    
 
     if (imageSRC) {
 		

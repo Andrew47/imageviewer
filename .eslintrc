@@ -1,0 +1,20 @@
+{
+  "parserOptions": {
+  "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2021,
+  },
+  "env": {
+  "browser": true,
+  "node": true
+  },
+"plugins": ["react", "jest", "jest-dom"],
+"extends": ["eslint:recommended", "plugin:react/recommended", "plugin:jest/recommended", "plugin:jest-dom/recommended"],
+"settings": {
+"react": {
+"version": "17.0.2"
+}
+}
+}
