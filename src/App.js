@@ -1,6 +1,8 @@
 import './App.css';
 import React from 'react';
+import html2canvas from 'html2canvas';
 import { useState, useEffect } from 'react';
+
 
 function App() {
     const [imageSRC, setImageSRC] = useState("");
@@ -16,6 +18,14 @@ function App() {
         }
 
     const deleteImage = () => {setImageSRC("")}
+
+    const exportImage = () => html2canvas(document.querySelector("#uploadedImage")).then(canvas => {
+        let div = document.querySelector("#snapshot")
+        if (div.firstChild) {
+            div.removeChild(div.firstChild)
+        }
+        div.append(canvas);
+        })
 
     let displayArea;
 
@@ -64,7 +74,13 @@ function App() {
 		
         displayArea = (
         <div id="imageBox">
-        <div id="uploadedImage" style={{backgroundImage: "url('"+ imageSRC + "')", backgroundPosition: `${x}% ${y}%`, backgroundSize: `${scale}%`, backgroundRepeat: "no-repeat", }}/>
+        <div id="uploadedImage" 
+          style={{
+              backgroundImage: "url('"+ imageSRC + "')", 
+              backgroundPosition: `${x}% ${y}%`, 
+              backgroundSize: `${scale}%`, 
+              backgroundRepeat: "no-repeat", 
+              }}/>
         </div>
         );
         }
@@ -80,48 +96,50 @@ function App() {
         <h1>
         Welcome to Image Viewer
         </h1>
-              </header>
-              <div>
-              <label htmlFor="imageUpload">Upload Image</label>
-              <input id="imageUpload" type="file" onChange={onImageChange}/>
-              <button id="imageDelete" onClick={deleteImage}>Delete Image</button>
-              </div>
-              <div>
-              {displayArea}
-              </div>
-              <div>
-              <p>Press the following keys to manipulate the image above:</p>
-              <table>
-              <tr>
+      </header>
+
+      <div>
+        <label htmlFor="imageUpload">Upload Image</label>
+        <input id="imageUpload" type="file" onChange={onImageChange}/>
+        <button id="imageDelete" onClick={deleteImage}>Delete Loaded Image</button>
+        <button id="imageExport" onClick={exportImage}>Snapshot Image</button>
+      </div>
+
+      <div>
+        <div style={{display: "inline-block"}}>
+          {displayArea}
+        </div>
+        <div id="snapshot" style={{display: "inline-block"}} />
+        <div>
+          <p>Press the following keys to manipulate the image above:</p>
+          <table>
+            <tr>
               <td>z</td>
               <td>Zoom In</td>
-              </tr>
-              <tr>
+            </tr>
+            <tr>
               <td>x</td>
               <td>Zoom Out</td>
-              </tr>
-              <tr>
+            </tr>
+            <tr>
               <td>h</td>
               <td>Move Image to the Left</td>
-              </tr>
-              <tr>
+            </tr>
+            <tr>
               <td>j</td>
               <td>Move Image Downwards</td>
-              </tr>
-<tr>
+            </tr>
+            <tr>
               <td>k</td>
               <td>Move Image Upwards</td>
-              </tr>
-              <tr>
+            </tr>
+            <tr>
               <td>l</td>
               <td>Move Image to the Right</td>
-              </tr>
-
-
-
-
-              </table>
-              </div>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
