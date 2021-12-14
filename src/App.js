@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
     const [imageSRC, setImageSRC] = useState("");
-    const [scale, setScale] = useState(1);
+    const [scale, setScale] = useState(40);
     const [x, setX] = useState(50);
     const [y, setY] = useState(50);
     
@@ -36,10 +36,10 @@ function App() {
 				setX(x => x+5)
 				break;
 				case "ArrowUp":
-				setY(y => y+5)
+				setY(y => y-5)
 				break;
 				case "ArrowDown":
-				setY(y => y-5)
+				setY(y => y+5)
 				break;
 				default:
 				break;
