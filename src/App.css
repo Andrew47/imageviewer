@@ -1,10 +1,10 @@
-#imageBox{
-width: 50vw;
-height:50vh;
+#imageBox {
+  width: 50vw;
+  height: 50vh;
 }
 
-#uploadedImage{
-width:100%;
-height:100%;
-background-color:black;
+#uploadedImage {
+  width: 100%;
+  height: 100%;
+  background-color: black;
 }

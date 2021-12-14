@@ -19,8 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint": "eslint . && yarn prettier --check src",
+    "lint:fix": "eslint --fix . && yarn prettier --write src"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +45,7 @@
     "@testing-library/user-event": "^12.8.3",
     "eslint": "^7.32.0",
     "eslint-plugin-jest": "^24.4.0",
-    "eslint-plugin-jest-dom": "^3.9.0"
+    "eslint-plugin-jest-dom": "^3.9.0",
+    "prettier": "2.5.1"
   }
 }
