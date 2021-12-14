@@ -30,15 +30,19 @@ function App() {
 				setScale(scale => scale/1.1);
 				break;
 				case "ArrowLeft":
+                                case "h":
 				setX(x => x-5)
 				break;
 				case "ArrowRight":
+                                case "l":
 				setX(x => x+5)
 				break;
 				case "ArrowUp":
+                                case "j":
 				setY(y => y-5)
 				break;
 				case "ArrowDown":
+                                case "k":
 				setY(y => y+5)
 				break;
 				default:
@@ -82,7 +86,42 @@ function App() {
               <input id="imageUpload" type="file" onChange={onImageChange}/>
               <button id="imageDelete" onClick={deleteImage}>Delete Image</button>
               </div>
+              <div>
               {displayArea}
+              </div>
+              <div>
+              <p>Press the following keys to manipulate the image above:</p>
+              <table>
+              <tr>
+              <td>z</td>
+              <td>Zoom In</td>
+              </tr>
+              <tr>
+              <td>x</td>
+              <td>Zoom Out</td>
+              </tr>
+              <tr>
+              <td>h</td>
+              <td>Move Image to the Left</td>
+              </tr>
+              <tr>
+              <td>j</td>
+              <td>Move Image Downwards</td>
+              </tr>
+<tr>
+              <td>k</td>
+              <td>Move Image Upwards</td>
+              </tr>
+              <tr>
+              <td>l</td>
+              <td>Move Image to the Right</td>
+              </tr>
+
+
+
+
+              </table>
+              </div>
     </div>
   );
 }
